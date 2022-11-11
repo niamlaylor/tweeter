@@ -20,6 +20,20 @@ html {
   font-size: 22px;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 300;
+  align-items: center;
+}
+
+.headerprofile {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 120px;
+}
+
+.headerprofile > div {
+  display: flex;
+  text-align: center;
 }
 
 /*

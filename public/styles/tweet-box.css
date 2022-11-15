@@ -1,4 +1,4 @@
-.tweet-card {
+.tweet-box {
   padding: 20px;
   border: 2px solid #545149;
   border-radius: 6pt;
@@ -6,11 +6,11 @@
   transition: box-shadow .3s;
 }
 
-.tweet-card:hover {
+.tweet-box:hover {
   box-shadow: 5px 5px 5px 1px #bdbdbd;
 }
 
-.tweet-card > p {
+.tweet-box > p {
   font-weight: 600;
 }
 

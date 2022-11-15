@@ -28,7 +28,7 @@
   align-items: center;
 }
 
-img {
+.tweet-box-header > div > img {
   padding-right: 10px;
   width: 75px;
   height: 64px;

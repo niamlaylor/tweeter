@@ -26,6 +26,11 @@
   border: 0px;
 }
 
+.tweet-submit-button:hover {
+  background-color: orange;
+  cursor: pointer;
+}
+
 #tweet-counter {
   font-family: 'Bungee', sans-serif;
 }

@@ -28,17 +28,17 @@
   align-items: center;
 }
 
-.tweet-box-header > div > img {
+img {
   padding-right: 10px;
   width: 75px;
   height: 64px;
 }
 
-.tweet-box-header > div > h3 {
+.tweet-box-username {
   font-weight: 300;
 }
 
-.tweet-box-header > h3 {
+.tweet-box-header-handle {
   color: #4056a1;
 }
 
@@ -55,7 +55,16 @@
   align-items: center;
 }
 
+.tweet-box-footer-days {
+  font-size: 14pt;
+}
+
 .tweet-box-footer > div > div {
+  display: flex;
+  flex-direction: row;
+}
+
+.tweet-box-footer-icons {
   display: flex;
   flex-direction: row;
 }
@@ -66,4 +75,5 @@ i {
 
 i:hover {
   color: orange;
+  cursor: pointer;
 }

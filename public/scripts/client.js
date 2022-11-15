@@ -5,6 +5,7 @@
  */
 
 $(document).ready( function() {
+  // Dummy data for testing purposes until AJAX functionality added
   const data = [
     {
       "user": {
@@ -26,10 +27,10 @@ $(document).ready( function() {
       "content": {
         "text": "Je pense , donc je suis"
       },
-      "created_at": 168474013495
+      "created_at": 1668374968201
     }
   ]
-
+  // Returns the number of days ago that the tweet was created, rounded down to the nearest whole number
   const dateDifference = (createdDate) => {
     return Math.round((Date.now() - createdDate) / (1000 * 60 * 60 * 24));
   };
@@ -60,14 +61,11 @@ $(document).ready( function() {
   </article>`;
     return $tweet;
   }
-
   // after page load, we run this to loop through each tweet in our db and populate the tweets on the front-end
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
       $('.new-tweet').append(createTweetElement(tweet));
     };
   };
-
   renderTweets(data);
-
 });

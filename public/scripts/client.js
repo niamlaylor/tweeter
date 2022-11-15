@@ -3,33 +3,50 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-const dateDifference = require('./helpers/dateDifference')
 
-const tweetData = {
-  "user": {
-    "name": "Newton",
-    "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-  "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-  "created_at": 1668362669772
-}
 $(document).ready( function() {
-  const createTweetElement = function(tweetData) {
-    let daysSinceCreated = dateDifference(tweetData.created_at);
+  const data = [
+    {
+      "user": {
+        "name": "Newton",
+        "avatars": "https://i.imgur.com/73hZDYK.png"
+        ,
+        "handle": "@SirIsaac"
+      },
+      "content": {
+        "text": "If I have seen further it is by standing on the shoulders of giants"
+      },
+      "created_at": 1668374968201
+    },
+    {
+      "user": {
+        "name": "Descartes",
+        "avatars": "https://i.imgur.com/nlhLi3I.png",
+        "handle": "@rd" },
+      "content": {
+        "text": "Je pense , donc je suis"
+      },
+      "created_at": 168474013495
+    }
+  ]
+
+  const dateDifference = (createdDate) => {
+    return Math.round((Date.now() - createdDate) / (1000 * 60 * 60 * 24));
+  };
+
+  const createTweetElement = function(tweet) {
+    let daysSinceCreated = dateDifference(tweet.created_at);
     daysSinceCreated > 1 ? daysSinceCreated += ' days' : daysSinceCreated += ' day';
 
     const $tweet = `<article class="tweet-box">
     <header class="tweet-box-header">
       <div>
-        <img alt="user-icon" src="${tweetData.user.avatars}" alt="user-icon">
-        <h3 class="tweet-box-username">${tweetData.user.name}</h3>
+        <img alt="user-icon" src="${tweet.user.avatars}" alt="user-icon">
+        <h3 class="tweet-box-username">${tweet.user.name}</h3>
       </div>
-      <h3 class="tweet-box-header-handle">${tweetData.user.handle}</h3>
+      <h3 class="tweet-box-header-handle">${tweet.user.handle}</h3>
     </header>
-    <p>${tweetData.content.text}</p>
+    <p>${tweet.content.text}</p>
     <footer class="tweet-box-footer">
       <div>
         <p class="tweet-box-footer-days">Created ${daysSinceCreated} ago</p>
@@ -43,6 +60,14 @@ $(document).ready( function() {
   </article>`;
     return $tweet;
   }
-  const $tweet = createTweetElement(tweetData);
-  $('container tweetsbody').append($tweet);
+
+  // after page load, we run this to loop through each tweet in our db and populate the tweets on the front-end
+  const renderTweets = function(tweets) {
+    for (const tweet of tweets) {
+      $('.new-tweet').append(createTweetElement(tweet));
+    };
+  };
+
+  renderTweets(data);
+
 });

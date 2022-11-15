@@ -9,8 +9,3 @@ $(document).ready( function() {
     tweetLength < 0 ? $('#tweet-counter').css('color', 'red') : $('#tweet-counter').css('color', '#545149');
   })
 });
-
-
-/*
-
-*/

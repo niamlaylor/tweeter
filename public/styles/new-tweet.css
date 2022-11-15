@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-top: 30px;
+  margin-top: 10px;
 }
 
 #tweet-text {
@@ -32,4 +34,5 @@
   display: flex;
   justify-content: space-between;
   padding-top: 10px;
+  padding-bottom: 70px;
 }

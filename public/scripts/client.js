@@ -27,16 +27,13 @@ $(document).ready( function() {
       "content": {
         "text": "Je pense , donc je suis"
       },
-      "created_at": 1668374968201
+      "created_at": 166881737999
     }
-  ]
-  // Returns the number of days ago that the tweet was created, rounded down to the nearest whole number
-  const dateDifference = (createdDate) => {
-    return Math.round((Date.now() - createdDate) / (1000 * 60 * 60 * 24));
-  };
-
+  ];
+  // dateDifference is a helper that returns how many days ago a tweet was created, rounded to the lowest whole number
   const createTweetElement = function(tweet) {
     let daysSinceCreated = dateDifference(tweet.created_at);
+    // Operator checks if days should be pluralized
     daysSinceCreated > 1 ? daysSinceCreated += ' days' : daysSinceCreated += ' day';
 
     const $tweet = `<article class="tweet-box">

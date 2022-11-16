@@ -4,7 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-$(document).ready( function() {
   // Dummy data for testing purposes until AJAX functionality added
   const data = [
     {
@@ -30,11 +29,11 @@ $(document).ready( function() {
       "created_at": 166881737999
     }
   ];
+
   // dateDifference is a helper that returns how many days ago a tweet was created, rounded to the lowest whole number
   const createTweetElement = function(tweet) {
-    let daysSinceCreated = dateDifference(tweet.created_at);
+    let daysSinceCreated = tweet.created_at;
     // Operator checks if days should be pluralized
-    daysSinceCreated > 1 ? daysSinceCreated += ' days' : daysSinceCreated += ' day';
 
     const $tweet = `<article class="tweet-box">
     <header class="tweet-box-header">
@@ -47,7 +46,7 @@ $(document).ready( function() {
     <p>${tweet.content.text}</p>
     <footer class="tweet-box-footer">
       <div>
-        <p class="tweet-box-footer-days">Created ${daysSinceCreated} ago</p>
+        <p class="tweet-box-footer-days">${daysSinceCreated}</p>
         <div class="tweet-box-footer-icons">
           <a><i class="fa-solid fa-flag"></i></a>
           <a><i class="fa-solid fa-retweet"></i></a>
@@ -58,11 +57,22 @@ $(document).ready( function() {
   </article>`;
     return $tweet;
   }
-  // after page load, we run this to loop through each tweet in our db and populate the tweets on the front-end
+
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
       $('.new-tweet').append(createTweetElement(tweet));
     };
   };
+
+  // Whenever we run any jQuery, we need it to be inside this function
+$(document).ready( function() {
+  // Ajax request for submitting a tweet
+  $('#new-tweet-form').submit( function(event) {
+    event.preventDefault();
+    const tweetData = $(this).serialize();
+    $.post('/tweets', tweetData);
+  })
+
+  // after page load, we run this to loop through each tweet in our db and populate the tweets on the front-end
   renderTweets(data);
 });

@@ -55,7 +55,7 @@
     <main class="container tweetsbody">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
-        <form action="/tweets" method="POST">
+        <form id="new-tweet-form" action="/tweets" method="POST">
           <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
           <div class="tweet-submit-counter-row">
             <output id="tweet-counter" name="counter" class="counter" for="tweet-text">140</output>
@@ -67,6 +67,5 @@
 
     <!--Body JS-->
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-    <script type="text/javascript" src="/scripts/helpers/dateDifference.js"></script>
   </body>
 </html>

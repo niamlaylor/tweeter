@@ -4,37 +4,8 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-  // Dummy data for testing purposes until AJAX functionality added
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1668374968201
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 166881737999
-    }
-  ];
-
   // dateDifference is a helper that returns how many days ago a tweet was created, rounded to the lowest whole number
   const createTweetElement = function(tweet) {
-    let daysSinceCreated = tweet.created_at;
-    // Operator checks if days should be pluralized
-
     const $tweet = `<article class="tweet-box">
     <header class="tweet-box-header">
       <div>
@@ -46,7 +17,7 @@
     <p>${tweet.content.text}</p>
     <footer class="tweet-box-footer">
       <div>
-        <p class="tweet-box-footer-days">${daysSinceCreated}</p>
+        <p class="tweet-box-footer-days">${tweet.created_at}</p>
         <div class="tweet-box-footer-icons">
           <a><i class="fa-solid fa-flag"></i></a>
           <a><i class="fa-solid fa-retweet"></i></a>
@@ -73,6 +44,10 @@ $(document).ready( function() {
     $.post('/tweets', tweetData);
   })
 
-  // after page load, we run this to loop through each tweet in our db and populate the tweets on the front-end
-  renderTweets(data);
+  const loadTweets = function() {
+    $.get('/tweets', function(data, status) {
+      status !== 'success' ? console.log(status) : renderTweets(data);
+    })
+  }
+  loadTweets();
 });

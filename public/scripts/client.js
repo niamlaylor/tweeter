@@ -4,8 +4,13 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+
   // dateDifference is a helper that returns how many days ago a tweet was created, rounded to the lowest whole number
+  const maxTweetLength = 140;
+
   const createTweetElement = function(tweet) {
+    const timeAgo = timeago.format(tweet.created_at);
+
     const $tweet = `<article class="tweet-box">
     <header class="tweet-box-header">
       <div>
@@ -17,7 +22,7 @@
     <p>${tweet.content.text}</p>
     <footer class="tweet-box-footer">
       <div>
-        <p class="tweet-box-footer-days">${tweet.created_at}</p>
+        <p class="tweet-box-footer-days">From ${timeAgo}</p>
         <div class="tweet-box-footer-icons">
           <a><i class="fa-solid fa-flag"></i></a>
           <a><i class="fa-solid fa-retweet"></i></a>
@@ -35,15 +40,16 @@
     };
   };
 
-  // Whenever we run any jQuery, we need it to be inside this function
+  // Whenever we run any jQuery, we need it to be inside .ready
 $(document).ready( function() {
   // Ajax request for submitting a tweet
   $('#new-tweet-form').submit( function(event) {
     event.preventDefault();
     const tweetData = $(this).serialize();
-    $.post('/tweets', tweetData);
+    const tweetLength = $('#tweet-text').val().length;
+    tweetLength <= maxTweetLength ? tweetLength ? $.post('/tweets', tweetData) : alert('Enter a tweet') : alert('Tweet is too long');
   })
-
+  // Dynamically load tweets on page load with an ajax GET request
   const loadTweets = function() {
     $.get('/tweets', function(data, status) {
       status !== 'success' ? console.log(status) : renderTweets(data);

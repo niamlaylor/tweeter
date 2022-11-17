@@ -48,7 +48,12 @@ $(document).ready( function() {
     const tweetData = $(this).serialize();
     const tweetLength = $('#tweet-text').val().length;
     tweetLength <= maxTweetLength ? tweetLength ? $.post('/tweets', tweetData) : alert('Enter a tweet') : alert('Tweet is too long');
-  })
+    if (tweetLength <= maxTweetLength && tweetLength) {
+      $.get('/tweets', function(data, status) {
+        status !== 'success' ? console.log(status) : renderTweets([data[data.length - 1]]);
+      });
+    };
+  });
   // Dynamically load tweets on page load with an ajax GET request
   const loadTweets = function() {
     $.get('/tweets', function(data, status) {

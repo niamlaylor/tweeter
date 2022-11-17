@@ -36,20 +36,22 @@
 
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
-      $('.new-tweet').append(createTweetElement(tweet));
+      $('#tweets-container').prepend(createTweetElement(tweet));
     };
   };
 
   // Whenever we run any jQuery, we need it to be inside .ready
 $(document).ready( function() {
-  // Ajax request for submitting a tweet
+  // Ajax request for submitting the create tweet form
   $('#new-tweet-form').submit( function(event) {
     event.preventDefault();
     const tweetData = $(this).serialize();
     const tweetLength = $('#tweet-text').val().length;
     tweetLength <= maxTweetLength ? tweetLength ? $.post('/tweets', tweetData) : alert('Enter a tweet') : alert('Tweet is too long');
+    // If tweet entry is valid, then we do an ajax get request for the newest tweet
     if (tweetLength <= maxTweetLength && tweetLength) {
       $.get('/tweets', function(data, status) {
+        // renderTweets function accepts an array so we need to pass the newest tweet 
         status !== 'success' ? console.log(status) : renderTweets([data[data.length - 1]]);
       });
     };

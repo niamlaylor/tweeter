@@ -4,9 +4,8 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-
-  // dateDifference is a helper that returns how many days ago a tweet was created, rounded to the lowest whole number
-  const maxTweetLength = 140;
+  const maxTweetLength = 140; // Characters
+  const slideSpeed = 200; // Milliseconds - speed of slideUp/slideDown jquery animations
 
   // This function prevents malicious entries in the tweet textarea
   const escape = function (str) {
@@ -48,6 +47,7 @@
     };
   };
 
+  // This function returns an appropriate error string based on the error type
   const throwError = function(errorType) {
     const errors = {
       empty: `Tweet field cannot be empty.`,
@@ -73,7 +73,7 @@ $(document).ready( function() {
           status !== 'success' ? console.log(status) : renderTweets([data[data.length - 1]]);
         })
       .then(() => {
-        $('#new-tweet-error').slideUp();
+        $('#new-tweet-error').slideUp(slideSpeed);
       })
       })
     // Below are error checks for the compose tweet field
@@ -81,12 +81,12 @@ $(document).ready( function() {
       const errorType = 'tooLong';
       const $errorMessage = throwError(errorType);
       $('#new-tweet-error-text').text($errorMessage)
-      $('#new-tweet-error').slideDown();
+      $('#new-tweet-error').slideDown(slideSpeed);
     } else if (!tweetLength) {
       const errorType = 'empty';
       const $errorMessage = throwError(errorType);
       $('#new-tweet-error-text').text($errorMessage)
-      $('#new-tweet-error').slideDown();
+      $('#new-tweet-error').slideDown(slideSpeed);
     }
   });
   // Dynamically load tweets on page load with an ajax GET request

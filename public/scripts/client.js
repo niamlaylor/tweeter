@@ -56,8 +56,10 @@ $(document).ready( function() {
           status !== 'success' ? console.log(status) : renderTweets([data[data.length - 1]]);
         });
       })
-    } else {
-      alert('Something is wrong!');
+    } else if (tweetLength > maxTweetLength) {
+      alert('Your tweet is too long!');
+    } else if (!tweetLength) {
+      alert('Write a tweet!');
     }
   });
   // Dynamically load tweets on page load with an ajax GET request

@@ -46,15 +46,19 @@ $(document).ready( function() {
   $('#new-tweet-form').submit( function(event) {
     event.preventDefault();
     const tweetData = $(this).serialize();
+
     const tweetLength = $('#tweet-text').val().length;
-    tweetLength <= maxTweetLength ? tweetLength ? $.post('/tweets', tweetData) : alert('Enter a tweet') : alert('Tweet is too long');
-    // If tweet entry is valid, then we do an ajax get request for the newest tweet
     if (tweetLength <= maxTweetLength && tweetLength) {
-      $.get('/tweets', function(data, status) {
-        // renderTweets function accepts an array so we need to pass the newest tweet 
-        status !== 'success' ? console.log(status) : renderTweets([data[data.length - 1]]);
-      });
-    };
+      $.post('/tweets', tweetData)
+      .then(() => {
+        $.get('/tweets', function(data, status) {
+          // renderTweets function accepts an array so we need to pass the newest tweet
+          status !== 'success' ? console.log(status) : renderTweets([data[data.length - 1]]);
+        });
+      })
+    } else {
+      alert('Something is wrong!');
+    }
   });
   // Dynamically load tweets on page load with an ajax GET request
   const loadTweets = function() {

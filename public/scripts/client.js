@@ -8,8 +8,16 @@
   // dateDifference is a helper that returns how many days ago a tweet was created, rounded to the lowest whole number
   const maxTweetLength = 140;
 
+  // This function prevents malicious entries in the tweet textarea
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
   const createTweetElement = function(tweet) {
     const timeAgo = timeago.format(tweet.created_at);
+    const safeHTML = `<p>${escape(tweet.content.text)}</p>`
 
     const $tweet = `<article class="tweet-box">
     <header class="tweet-box-header">
@@ -19,7 +27,7 @@
       </div>
       <h3 class="tweet-box-header-handle">${tweet.user.handle}</h3>
     </header>
-    <p>${tweet.content.text}</p>
+    ${safeHTML}
     <footer class="tweet-box-footer">
       <div>
         <p class="tweet-box-footer-days">From ${timeAgo}</p>

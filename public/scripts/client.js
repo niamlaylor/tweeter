@@ -48,6 +48,15 @@
     };
   };
 
+  const throwError = function(errorType) {
+    const errors = {
+      empty: `Tweet field cannot be empty.`,
+      tooLong: `Tweet must be ${maxTweetLength} characters or less.`
+    }
+    const $errorMessage = `${errors[errorType]}`
+    return $errorMessage;
+  };
+
   // Whenever we run any jQuery, we need it to be inside .ready
 $(document).ready( function() {
   // Ajax request for submitting the create tweet form
@@ -62,18 +71,28 @@ $(document).ready( function() {
         $.get('/tweets', function(data, status) {
           // renderTweets function accepts an array so we need to pass the newest tweet
           status !== 'success' ? console.log(status) : renderTweets([data[data.length - 1]]);
-        });
+        })
+      .then(() => {
+        $('#new-tweet-error').slideUp();
       })
+      })
+    // Below are error checks for the compose tweet field
     } else if (tweetLength > maxTweetLength) {
-      alert('Your tweet is too long!');
+      const errorType = 'tooLong';
+      const $errorMessage = throwError(errorType);
+      $('#new-tweet-error-text').text($errorMessage)
+      $('#new-tweet-error').slideDown();
     } else if (!tweetLength) {
-      alert('Write a tweet!');
+      const errorType = 'empty';
+      const $errorMessage = throwError(errorType);
+      $('#new-tweet-error-text').text($errorMessage)
+      $('#new-tweet-error').slideDown();
     }
   });
   // Dynamically load tweets on page load with an ajax GET request
   const loadTweets = function() {
     $.get('/tweets', function(data, status) {
-      status !== 'success' ? console.log(status) : renderTweets(data);
+      status === 'success' ? renderTweets(data) : console.log(status);
     })
   }
   loadTweets();

@@ -6,6 +6,16 @@
   margin-top: 10px;
 }
 
+#new-tweet-error {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 0px 10px 0px 10px;
+  background: #f94545;
+  color: white;
+}
+
 #tweets-container {
   display: flex;
   flex-direction: column;

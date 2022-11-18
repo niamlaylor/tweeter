@@ -27,3 +27,11 @@
   font-size: 30px;
   font-weight: 400;
 }
+
+#nav-write-new-tweet {
+  cursor: pointer;
+}
+
+#nav-write-new-tweet:hover {
+  color: orange;
+}

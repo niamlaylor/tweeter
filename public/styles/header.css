@@ -1,6 +1,6 @@
 .headerprofile {
   display: flex;
-  height: 520px;
+  height: 450px;
   width: 100%;
   margin-top: 120px;
   justify-content: center;
@@ -21,5 +21,11 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 160px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .headerprofile {
+    width: 550px;
   }
 }

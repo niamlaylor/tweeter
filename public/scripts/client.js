@@ -73,6 +73,9 @@ $(document).ready( function() {
           status !== 'success' ? console.log(status) : renderTweets([data[data.length - 1]]);
         })
       .then(() => {
+        $('#tweet-text').val('');
+      })
+      .then(() => {
         $('#new-tweet-error').slideUp(slideSpeed);
       })
       })

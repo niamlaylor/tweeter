@@ -1,6 +1,6 @@
 .tweet-box {
   padding: 20px;
-  border: 2px solid #545149;
+  border: 2px solid var(--text-color-dark);
   border-radius: 6pt;
   margin-bottom: 20px;
   transition: box-shadow .3s;
@@ -39,13 +39,13 @@
 }
 
 .tweet-box-header-handle {
-  color: #4056a1;
+  color: var(--primary-color-dark);
 }
 
 .tweet-box-footer {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid #545149;
+  border-top: 1px solid var(--text-color-dark);
 }
 
 .tweet-box-footer > div {
@@ -74,6 +74,6 @@ i {
 }
 
 i:hover {
-  color: orange;
+  color: var(--button-hover-color);
   cursor: pointer;
 }

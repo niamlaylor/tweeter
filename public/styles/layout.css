@@ -10,13 +10,22 @@
   box-sizing: inherit;
 }
 
+:root {
+  --primary-color-dark: #4056a1;
+  --primary-color-light: #e7e7e7;
+  --background-color: #f4f1ec;
+  --text-color-dark: #545149;
+  --text-color-light: white;
+  --button-hover-color: orange;
+}
+
 /*
  * Global layout stuff
  */
 
  body {
-  color: #545149;
-  background-color: #f4f1ec;
+  color: var(--text-color-dark);
+  background-color: var(--background-color);
   font-size: 22px;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 300;
@@ -26,7 +35,7 @@
 .tweetsbody {
   display: flex;
   flex-direction: column;
-  background-color: #f4f1ec;
+  background-color: var(--background-color);
   padding-bottom: 10px;
 }
 

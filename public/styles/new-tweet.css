@@ -15,8 +15,9 @@
   align-items: center;
   width: 100%;
   padding: 0px 10px 0px 10px;
+  margin-bottom: 10px;
   background: #f94545;
-  color: white;
+  color: var(--text-color-light);
 }
 
 #tweets-container {
@@ -29,7 +30,7 @@
 }
 
 #tweet-text {
-  background-color: #e7e7e7;
+  background-color: var(--primary-color-light);
   width: 100%;
   height: 60px;
   font-weight: 300;
@@ -41,15 +42,15 @@
 }
 
 .tweet-submit-button {
-  background-color: #4056a1;
+  background-color: var(--primary-color-dark);
   font-family: 'Bungee', sans-serif;
-  color: white;
+  color: var(--text-color-light);
   padding: 0.25em;
   border: 0px;
 }
 
 .tweet-submit-button:hover {
-  background-color: orange;
+  background-color: var(--button-hover-color);
   cursor: pointer;
 }
 

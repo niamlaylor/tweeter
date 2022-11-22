@@ -3,8 +3,8 @@
   position: fixed;
   width: 100%;
   height: 120px;
-  background-color: #4056a1;
-  color: #FFFFFF;
+  background-color: var(--primary-color-dark);
+  color: var(--text-color-light);
 }
 .navtext {
   display: flex;
@@ -33,5 +33,5 @@
 }
 
 #nav-write-new-tweet:hover {
-  color: orange;
+  color: var(--button-hover-color);
 }

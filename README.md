@@ -4,8 +4,8 @@ Tweeter is a simple, single-page Twitter clone.
 
 Post what's on your mind 😎
 
-!["Tweeter mobile view"](./public/images/tweeter-mobile.png)
-!["Tweeter desktop view"](./public/images/tweeter-desktop.png)
+!["Tweeter mobile view"](https://raw.githubusercontent.com/niamlaylor/tweeter/master/public/images/tweeter-mobile.png)
+!["Tweeter desktop view"](https://raw.githubusercontent.com/niamlaylor/tweeter/master/public/images/tweeter-desktop.png)
 
 ## Getting Started
 

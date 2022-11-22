@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
   padding-top: 30px;
   margin-top: 10px;
 }
@@ -20,6 +23,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #tweet-text {
@@ -56,4 +62,8 @@
   justify-content: space-between;
   padding-top: 10px;
   padding-bottom: 70px;
+}
+
+#new-tweet-top {
+  margin-top: 0px;
 }

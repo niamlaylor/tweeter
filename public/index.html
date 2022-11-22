@@ -25,6 +25,9 @@
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
+
+    <!--Disable viewport zooming-->
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
   </head>
 
   <body>
@@ -42,30 +45,33 @@
         </div>
       </div>
     </nav>
-    <header class="headerprofile">
-      <div>
-          <img alt="user-icon" src="/images/profile-hex.png"> 
-      </div>
-      <br>
-      <div>
-          <h2>Liam Naylor</h2>
-      </div>
-  </header>
+
 
     <!-- Page-specific (main) content here -->
-    <main class="container tweetsbody">
-      <section class="new-tweet">
-        <div id="new-tweet-error" style="display: none;"><i class="fa-solid fa-triangle-exclamation"></i><p id ="new-tweet-error-text"></p></div>
-        <h2 id="new-tweet-top">Compose Tweet</h2>
-        <form id="new-tweet-form" action="/tweets" method="POST">
-          <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
-          <div class="tweet-submit-counter-row">
-            <output id="tweet-counter" name="counter" class="counter" for="tweet-text">140</output>
-            <button type="submit" class="tweet-submit-button">Tweet</button>
-          </div>
-        </form>
-      </section>
-      <section id="tweets-container">
+    <main class="tweetsbody">
+      <header class="headerprofile">
+        <div>
+            <img alt="user-icon" src="/images/profile-hex.png"> 
+        </div>
+        <br>
+        <div>
+            <h2>Liam Naylor</h2>
+        </div>
+      </header>
+      <section>
+        <section class="new-tweet">
+          <div id="new-tweet-error" style="display: none;"><i class="fa-solid fa-triangle-exclamation"></i><p id ="new-tweet-error-text"></p></div>
+          <h2 id="new-tweet-top">Compose Tweet</h2>
+          <form id="new-tweet-form" action="/tweets" method="POST">
+            <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+            <div class="tweet-submit-counter-row">
+              <output id="tweet-counter" name="counter" class="counter" for="tweet-text">140</output>
+              <button type="submit" class="tweet-submit-button">Tweet</button>
+            </div>
+          </form>
+        </section>
+        <section id="tweets-container">
+        </section>
       </section>
     </main>
 

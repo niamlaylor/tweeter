@@ -65,13 +65,9 @@ $(document).ready(function() {
         $.get('/tweets', function(data, status) {
           // renderTweets function accepts an array so we need to pass the newest tweet
           status !== 'success' ? console.log(status) : renderTweets([data[data.length - 1]]);
+          $('#tweet-text').val('');
+          $('#new-tweet-error').slideUp(slideSpeed);
         })
-      .then(() => {
-        $('#tweet-text').val('');
-      })
-      .then(() => {
-        $('#new-tweet-error').slideUp(slideSpeed);
-      });
       });
     // Below are error checks for the compose tweet field
     } else if (tweetLength > maxTweetLength) {
